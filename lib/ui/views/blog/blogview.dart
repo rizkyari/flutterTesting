@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:screen_aminin/ui/views/blog/blogdetail.dart';
 
 class BlogView extends StatefulWidget {
   @override
@@ -113,12 +114,23 @@ class _BlogViewState extends State<BlogView> {
             thickness: 1.0,
           ),
           Expanded(
-            child: ListView.builder(itemCount: _listNews.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index){
-              ListNews e = _listNews[index];
-              return listBlog(e.thumbnailNews, e.newsTitle, e.category, e.uploadDate);
-            },),
+            child: ListView.builder(
+              itemCount: _listNews.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                ListNews e = _listNews[index];
+                return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                BlogDetail(title: e.newsTitle, category: e.category,)),
+                      );
+                    },
+                    child: listBlog(e.thumbnailNews, e.newsTitle, e.category,
+                        e.uploadDate));
+              },
+            ),
           )
           /*Container(
             child: SingleChildScrollView(
