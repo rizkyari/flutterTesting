@@ -132,29 +132,29 @@ class _UbahProfilState extends State<UbahProfil> {
     );
   }
 
-  Widget _buildButton(){
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 50,
-      margin: EdgeInsets.only(top: 40),
-      child: RaisedButton(
-        color: Color(0xFF9164CC),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: BorderSide(color: Color(0xFF9164cc)),
-        ),
-        onPressed: () {
-          print("button pressed");
-        },
-        child: Text(
-          "Simpan",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-    );
-  }
+//  Widget _buildButton(){
+//    return Container(
+//      width: MediaQuery.of(context).size.width,
+//      height: 50,
+//      margin: EdgeInsets.only(top: 40),
+//      child: RaisedButton(
+//        color: Color(0xFF9164CC),
+//        shape: RoundedRectangleBorder(
+//          borderRadius: BorderRadius.circular(10),
+//          side: BorderSide(color: Color(0xFF9164cc)),
+//        ),
+//        onPressed: () {
+//          print("button pressed");
+//        },
+//        child: Text(
+//          "Simpan",
+//          style: TextStyle(color: Colors.white),
+//        ),
+//      ),
+//    );
+//  }
 
-  Widget _buildTextField(String placeholder, {Color cursorColor = Colors.green, Widget blabal, double widht}){
+  Widget _buildTextField(String placeholder, {Color cursorColor = Colors.green}){
     return TextField(
       decoration: InputDecoration(
           border: OutlineInputBorder(),
