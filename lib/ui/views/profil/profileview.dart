@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:screen_aminin/ui/views/ubahpin/ubahpinview.dart';
 import 'package:screen_aminin/ui/views/ubahprofil/ubahprofil.dart';
 
 class ProfileView extends StatefulWidget {
@@ -99,9 +100,12 @@ class _ProfileViewState extends State<ProfileView> {
     _userInfos.add(UserInfo(user: "rizky@bahaso.com", key: "E-mail"));
     _userInfos.add(UserInfo(user: "081348620655", key: "Handphone"));
     _buttonNavs.add(ButtonNav(
-        text: "Riwayat Transaksi", icon: "assets/images/icons/arrow.png"));
+        text: "Riwayat Transaksi", icon: "assets/images/icons/arrow.png" , destination: UbahPin()));
     _buttonNavs.add(
-        ButtonNav(text: "Ubah PIN", icon: "assets/images/icons/arrow.png"));
+        ButtonNav(text: "Ubah PIN", icon: "assets/images/icons/arrow.png", destination: UbahPin()));
+    _buttonNavs.add(
+      ButtonNav(text: "Tukar Voucher", icon: "assets/images/icons/arrow.png", destination: UbahPin())
+    );
   }
 
   Widget build(BuildContext context) {
@@ -174,7 +178,7 @@ class _ProfileViewState extends State<ProfileView> {
               Container(
                 child: Column(
                   children: _buttonNavs
-                      .map((items) => buttonGo(items.text, items.icon))
+                      .map((items) => buttonGo(context,items.text, items.icon, items.destination))
                       .toList(),
                 ),
               ),
@@ -273,7 +277,7 @@ Widget account(String user, String key) {
       ));
 }
 
-Widget buttonGo(String text, String icon) {
+Widget buttonGo(BuildContext context, String text, String icon, Widget destination) {
   return Container(
     margin: EdgeInsets.only(
       top: 15,
@@ -284,7 +288,7 @@ Widget buttonGo(String text, String icon) {
           borderRadius: BorderRadius.circular(10),
           side: BorderSide(color: Colors.white)),
       onPressed: () {
-        print("button tapped");
+        Navigator.push(context, MaterialPageRoute(builder: (context) => destination));
       },
       child: Container(
         padding: EdgeInsets.only(top: 17, bottom: 17),
@@ -317,6 +321,7 @@ class UserInfo {
 class ButtonNav {
   final String text;
   final String icon;
+  final Widget destination;
 
-  ButtonNav({this.text, this.icon});
+  ButtonNav({this.text, this.icon, this.destination});
 }
